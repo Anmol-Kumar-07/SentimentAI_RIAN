@@ -1,0 +1,46 @@
+review,sentiment
+"The product is excellent and works exactly as expected",positive
+"Very happy with the quality and fast delivery",positive
+"Customer support solved my issue quickly",positive
+"Great value for money and easy to use",positive
+"I love this product and would recommend it",positive
+"The app is simple, useful, and reliable",positive
+"Delivery was quick and the packaging was good",positive
+"Excellent experience from start to finish",positive
+"The product quality is impressive",positive
+"Friendly support and a smooth buying experience",positive
+"Works perfectly and looks great",positive
+"Good quality for the price",positive
+"The product broke after one day and support did not help",negative
+"Very disappointed with the poor quality",negative
+"Delivery was late and the package was damaged",negative
+"The app crashes every time I open it",negative
+"Not worth the money and difficult to use",negative
+"Customer service was rude and unhelpful",negative
+"The item arrived broken and dirty",negative
+"Terrible experience, I want a refund",negative
+"The product stopped working after two days",negative
+"Poor design and confusing instructions",negative
+"I regret buying this product",negative
+"Slow delivery and no useful response from support",negative
+"The package arrived today",neutral
+"I received the order this morning",neutral
+"The product is available in three colours",neutral
+"I used the service for the first time today",neutral
+"The box contains a charger and a user manual",neutral
+"The order status changed to shipped",neutral
+"The product has a screen and two buttons",neutral
+"The store is located near the city centre",neutral
+"The subscription renews at the end of the month",neutral
+"The item weighs about one kilogram",neutral
+"The app has a settings page and a profile page",neutral
+"The delivery estimate says three business days",neutral
+"The product comes in a blue box",neutral
+"Installation took about ten minutes",neutral
+"The package included two items",neutral
+"Support replied and asked for more details",neutral
+"Payment was processed on Tuesday",neutral
+"Product details are listed on the website",neutral
+"One feature is called smart mode",neutral
+"Warranty information is printed on the package",neutral
+"An update was released this week",neutral

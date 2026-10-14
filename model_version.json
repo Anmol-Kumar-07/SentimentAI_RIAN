@@ -1,0 +1,10 @@
+{
+  "model_version": "1.0.0",
+  "model": "TF-IDF + Logistic Regression",
+  "vectorizer": "TF-IDF (unigrams and bigrams; max_features=10000)",
+  "labels": {
+    "0": "Negative",
+    "1": "Positive",
+    "2": "Neutral"
+  }
+}

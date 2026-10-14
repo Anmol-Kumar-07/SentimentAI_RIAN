@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}YouTube Sentiment | SentimentAI{% endblock %}
+{% block content %}
+<section class="hero"><small>YOUTUBE • NLP SENTIMENT</small><h1>Analyze a video's <em>comments.</em></h1><p>Paste a public YouTube video link. The app fetches accessible comments, labels each one, and prepares a CSV for Excel or Power BI.</p></section>
+{% if error %}<div class="alert">{{ error }}</div>{% endif %}
+<section class="panel">
+<form method="post" action="/youtube">
+<label for="video_url">YouTube video URL</label>
+<input id="video_url" name="video_url" type="url" required value="{{ video_url }}" placeholder="https://www.youtube.com/watch?v=..." style="width:100%;box-sizing:border-box;padding:12px;margin:8px 0 16px;border:1px solid #ccd3df;border-radius:8px">
+<label for="max_comments">Maximum comments to analyze</label>
+<select id="max_comments" name="max_comments" style="display:block;padding:10px;margin:8px 0 16px;border:1px solid #ccd3df;border-radius:8px">
+{% for n in [50,100,200,500,1000] %}<option value="{{ n }}" {% if requested_count == n %}selected{% endif %}>{{ n }} comments</option>{% endfor %}
+</select>
+<div class="formrow"><span>Publicly available top-level comments are analyzed. A YouTube Data API v3 key is required.</span><button type="submit">Analyze YouTube comments →</button></div>
+</form>
+</section>
+{% if results %}
+<section class="stats"><div><small>Comments analyzed</small><strong>{{ results|length }}</strong></div><div><small>Positive</small><strong>{{ summary.Positive.count }} ({{ summary.Positive.percent }}%)</strong></div><div><small>Negative</small><strong>{{ summary.Negative.count }} ({{ summary.Negative.percent }}%)</strong></div><div><small>Neutral</small><strong>{{ summary.Neutral.count }} ({{ summary.Neutral.percent }}%)</strong></div></section>
+<section class="panel"><h2>Download labeled comments</h2><p>CSV columns include comment text, sentiment label, confidence, predicted 1–5 rating, author, likes and published time. The main review fields follow the same format as your existing CSV export.</p>
+<form method="post" action="/youtube/export"><input type="hidden" name="results_json" value='{{ results|tojson|forceescape }}'><button type="submit">Download all analyzed comments (CSV) ↓</button></form></section>
+<section class="panel"><h2>Preview (first 20 comments)</h2><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse"><thead><tr><th>Comment</th><th>Sentiment</th><th>Confidence</th><th>Rating</th><th>Likes</th></tr></thead><tbody>
+{% for row in results[:20] %}<tr><td style="padding:10px;max-width:420px">{{ row.comment_text }}</td><td style="padding:10px">{{ row.predicted_sentiment }}</td><td style="padding:10px">{{ (row.sentiment_confidence*100)|round(1) }}%</td><td style="padding:10px">{{ row.predicted_rating }}/5</td><td style="padding:10px">{{ row.likes }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endif %}
+<p class="note">Note: results reflect the model's predictions, not guaranteed human judgments. YouTube may restrict comment access, and comments disabled/private videos may not work.</p>
+{% endblock %}

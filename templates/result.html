@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Result | SentimentAI{% endblock %}{% block content %}
+<section class="hero"><small>ANALYSIS RESULT</small><h1>Your review <em>analysis.</em></h1></section>
+<section class="panel result {{ sentiment|lower }}"><div><small>Predicted sentiment</small><h2>{{ sentiment|title }}</h2><small>Sentiment confidence</small><strong>{{ confidence }}%</strong></div><div class="confidence"><small>Predicted star rating</small><h2>{{ rating }} / 5 ★</h2><small>Rating confidence</small><strong>{{ rating_confidence }}%</strong></div></section>
+<section class="panel"><small>REVIEW ANALYZED</small><p>{{ review }}</p></section><p class="note">Confidence is the highest class probability, not a guarantee of correctness. Validate predictions against real labeled reviews.</p><a class="linkbtn" href="/">Analyze another review →</a>{% endblock %}
